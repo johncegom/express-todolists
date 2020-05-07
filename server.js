@@ -6,14 +6,22 @@
 const express = require('express');
 const app = express();
 
+app.set('view engine', 'pug');
+
 // https://expressjs.com/en/starter/basic-routing.html
 app.get('/', (request, response) => {
   response.send('I love CodersX');
 });
 
 app.get('/todos', (request, response) => {
-  response.send('<ul><li>Đi chợ</li><li>Nấu cơm</li><li>Rửa bát</li><li>Học code tại CodersX</li></ul>');
-  
+  response.render('todos/index',{
+    todos: [
+      {id: 1, name: "Đi chợ", status: true},
+      {id: 2, name: "Nấu cơm", status: false},
+      {id: 3, name: "Rửa bát", status: false},
+      {id: 4, name: "Học code tại CodersX", status: false}
+    ]
+  })
 })
 
 // listen for requests :)
