@@ -4,7 +4,11 @@
 // we've started you off with Express (https://expressjs.com/)
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.set("view engine", "pug");
 
@@ -35,6 +39,16 @@ app.get("/todos/search", (req, res) => {
     todos: filteredTodos,
     q: q
   });
+});
+
+app.post("/todos/create", (req, res) => {
+  var newTodo = {
+    id: todos[todos.length - 1].id + 1,
+    name: req.body.todo,
+    status: req.body.status
+  };
+  todos.push(newTodo);
+  res.redirect("back");
 });
 
 // listen for requests :)
