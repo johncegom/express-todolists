@@ -1,1 +1,1 @@
-All practices using Glitch stored here.
+All practices using Glitch.com stored here.
