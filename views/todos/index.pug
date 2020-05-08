@@ -9,3 +9,5 @@ form(action="/todos/create", method="POST")
 ul
   each todo in todos
     li= todo.text
+      span &nbsp
+      a(href="/todos/" + todo.id + "/delete") Delete

@@ -44,20 +44,44 @@ app.get("/todos/search", (req, res) => {
   });
 });
 
+app.get("/todos/:id/delete", (req, res) => {
+  var id = parseInt(req.params.id);
+  db.get("todos")
+    .remove({ id: id })
+    .write();
+  res.redirect("back");
+});
+
 app.post("/todos/create", (req, res) => {
-  var temp = db.get('todos').value();
   var newTodo = {
-    id: temp[temp.length - 1].id + 1,
+    id: generateId(),
     text: req.body.text,
     status: req.body.status
   };
   db.get("todos")
     .push(newTodo)
     .write();
-  res.redirect("back");
+  res.redirect("/todos");
 });
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
 });
+
+function generateId() {
+  let todos = db.get("todos").value();
+  let temp, temp1;
+  for (let i = 0; i < todos.length; i++) {
+    temp1 = db
+      .get("todos")
+      .find({ id: i + 1 })
+      .value();
+    console.log(typeof temp1);
+      if (!temp1) {
+        console.log(i);
+        return i + 1;
+      }
+  }
+  return todos.length + 1;
+}
