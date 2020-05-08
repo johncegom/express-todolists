@@ -45,8 +45,9 @@ app.get("/todos/search", (req, res) => {
 });
 
 app.post("/todos/create", (req, res) => {
+  var temp = db.get('todos').value();
   var newTodo = {
-    id: todos[todos.length - 1].id + 1,
+    id: temp[temp.length - 1].id + 1,
     text: req.body.text,
     status: req.body.status
   };

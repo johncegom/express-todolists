@@ -24,6 +24,11 @@
       "id": 5,
       "text": "Đi ngủ",
       "status": "false"
+    },
+    {
+      "id": 6,
+      "text": "Đánh răng",
+      "status": "false"
     }
   ]
 }
