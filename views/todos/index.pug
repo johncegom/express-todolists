@@ -3,9 +3,9 @@ form(action="/todos/search", method="GET")
   input(type="text", name="q" value=q)
   button Search
 form(action="/todos/create", method="POST")
-  input(type="text", name="todo")
+  input(type="text", name="text")
   input(type="hidden", name="status", value = "false")
   button Create
 ul
   each todo in todos
-    li= todo.name
+    li= todo.text

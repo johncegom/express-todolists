@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": 5,
+      "text": "Đi chợ",
+      "status": "false"
+    },
+    {
+      "id": 5,
+      "text": "Nấu cơm",
+      "status": "false"
+    },
+    {
+      "id": 5,
+      "text": "Rửa bát",
+      "status": "false"
+    },
+    {
+      "id": 5,
+      "text": "Học code tại CodersX",
+      "status": "false"
+    },
+    {
+      "id": 5,
+      "text": "Đi ngủ",
+      "status": "false"
+    }
+  ]
+}
